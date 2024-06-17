@@ -9,7 +9,7 @@ import { isClass } from '@sindresorhus/is'
 import { Queue, QueueOptions, Worker, WorkerOptions } from 'bullmq'
 import { RuntimeException } from '@poppinss/utils'
 import { Job } from './job.js'
-import type { JobsOptions } from 'bullmq'
+import type { Job as BullMQJob, JobsOptions } from 'bullmq'
 import type { ApplicationService, LoggerService } from '@adonisjs/core/types'
 import type {
   AllowedJobTypes,
@@ -78,6 +78,14 @@ export class QueueManager {
     return this.#queues.get(queueName)!
   }
 
+  async #instantiateJob(job: BullMQJob) {
+    const { default: jobClass } = await import(job.name)
+    const jobClassInstance = await this.#app.container.make(jobClass)
+    jobClassInstance.$injectInternal({ job, logger: this.#logger })
+
+    return jobClassInstance
+  }
+
   async dispatch<Job extends AllowedJobTypes>(
     job: Job,
     payload: Job extends JobHandlerConstructor
@@ -118,9 +126,7 @@ export class QueueManager {
         let jobClassInstance: Job
 
         try {
-          const { default: jobClass } = await import(job.name)
-          jobClassInstance = await this.#app.container.make(jobClass)
-          jobClassInstance.$injectInternal({ job, logger: this.#logger })
+          jobClassInstance = await this.#instantiateJob(job)
         } catch (e) {
           this.#logger.error(`Job ${job.name} was not able to be created`)
           this.#logger.error(e)
@@ -141,10 +147,7 @@ export class QueueManager {
       // This can occur if worker maxStalledCount has been reached and the removeOnFail is set to true.
       if (job && (job.attemptsMade === job.opts.attempts || job.finishedOn)) {
         // Call the failed method of the handler class if there is one
-        const { default: jobClass } = await import(job.name)
-        const jobClassInstance = (await this.#app.container.make(jobClass)) as Job
-
-        jobClassInstance.$injectInternal({ job, logger: this.#logger })
+        const jobClassInstance = await this.#instantiateJob(job)
 
         await this.#app.container.call(jobClassInstance, 'rescue', [job.data, error])
       }
