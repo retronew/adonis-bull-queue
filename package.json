@@ -1,9 +1,9 @@
 {
-  "name": "@rlanz/bull-queue",
+  "name": "@retronew/adonis-bull-queue",
   "description": "Queue system based on BullMQ for AdonisJS",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "engines": {
-    "node": ">=18.16.0"
+    "node": ">=22.13.0"
   },
   "main": "./build/index.js",
   "type": "module",
@@ -34,7 +34,6 @@
     "copyfiles": "copyfiles \"stubs/**/**/*.stub\" build",
     "format": "prettier --write .",
     "lint": "eslint .",
-    "release": "npx release-it",
     "prepublishOnly": "npm run build"
   },
   "devDependencies": {
@@ -44,11 +43,11 @@
     "@adonisjs/prettier-config": "^1.4.0",
     "@adonisjs/tsconfig": "^1.4.0",
     "@swc/core": "^1.11.1",
+    "@types/node": "^22.13.5",
     "copyfiles": "^2.4.1",
     "del-cli": "^6.0.0",
     "eslint": "^9.21.0",
     "prettier": "^3.5.2",
-    "release-it": "^18.1.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.3"
   },
@@ -62,34 +61,19 @@
   },
   "author": "Romain Lanz <romain.lanz@pm.me>",
   "license": "MIT",
-  "homepage": "https://github.com/romainlanz/adonis-bull-queue#readme",
+  "homepage": "https://github.com/retronew/adonis-bull-queue#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/romainlanz/adonis-bull-queue.git"
+    "url": "git+https://github.com/retronew/adonis-bull-queue.git"
   },
   "bugs": {
-    "url": "https://github.com/romainlanz/adonis-bull-queue/issues"
+    "url": "https://github.com/retronew/adonis-bull-queue/issues"
   },
   "keywords": [
     "adonisjs",
     "bullmq",
     "queue"
   ],
-  "eslintConfig": {
-    "extends": "@adonisjs/eslint-config/package"
-  },
-  "release-it": {
-    "git": {
-      "commitMessage": "chore(release): ${version}",
-      "tagAnnotation": "v${version}",
-      "tagName": "v${version}"
-    },
-    "github": {
-      "release": true,
-      "releaseName": "v${version}",
-      "web": true
-    }
-  },
   "prettier": "@adonisjs/prettier-config",
   "publishConfig": {
     "tag": "latest",
