@@ -1,10 +1,3 @@
-/**
- * @rlanz/bull-queue
- *
- * @license MIT
- * @copyright Romain Lanz <romain.lanz@pm.me>
- */
-
 import { BaseCommand, args } from '@adonisjs/core/ace'
 import { stubsRoot } from '../stubs/index.js'
 import type { CommandOptions } from '@adonisjs/core/types/ace'

@@ -1,14 +1,14 @@
 <p align="center">
-  <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/2793951/249391043-4d65a757-b8cb-47de-b197-774df2cf0837.png" alt="@rlanz/bull-queue">
+  <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/2793951/249391043-4d65a757-b8cb-47de-b197-774df2cf0837.png" alt="@retronew/adonis-bull-queue">
 </p>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/@rlanz/bull-queue"><img src="https://img.shields.io/npm/dm/@rlanz/bull-queue.svg?style=flat-square" alt="Download"></a>
-  <a href="https://www.npmjs.com/package/@rlanz/bull-queue"><img src="https://img.shields.io/npm/v/@rlanz/bull-queue.svg?style=flat-square" alt="Version"></a>
-  <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/npm/l/@rlanz/bull-queue.svg?style=flat-square" alt="License"></a>
+  <a href="https://www.npmjs.com/package/@retronew/adonis-bull-queue"><img src="https://img.shields.io/npm/dm/@retronew/adonis-bull-queue.svg?style=flat-square" alt="Download"></a>
+  <a href="https://www.npmjs.com/package/@retronew/adonis-bull-queue"><img src="https://img.shields.io/npm/v/@retronew/adonis-bull-queue.svg?style=flat-square" alt="Version"></a>
+  <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/npm/l/@retronew/adonis-bull-queue.svg?style=flat-square" alt="License"></a>
 </p>
 
-`@rlanz/bull-queue` is a queue system based on [BullMQ](https://github.com/taskforcesh/bullmq)
+`@retronew/adonis-bull-queue` is a queue system based on [BullMQ](https://github.com/taskforcesh/bullmq)
 for [AdonisJS](https://adonisjs.com/).
 
 > [!NOTE]
@@ -21,7 +21,7 @@ for [AdonisJS](https://adonisjs.com/).
 This package is available in the npm registry.
 
 ```bash
-node ace add @rlanz/bull-queue
+node ace add @retronew/adonis-bull-queue
 ```
 
 ## Usage
@@ -30,7 +30,7 @@ The `queue` service gives you access to the `dispatch` method.
 It will dispatch the linked job to the queue with the given payload.
 
 ```ts
-import queue from '@rlanz/bull-queue/services/main';
+import queue from '@retronew/adonis-bull-queue/services/main';
 
 queue.dispatch(RegisterStripeCustomer, {...});
 
@@ -54,7 +54,7 @@ Since the job instance is passed to the constructor, you can easily send notific
 
 ```ts
 // app/jobs/register_stripe_customer.ts
-import { Job } from '@rlanz/bull-queue'
+import { Job } from '@retronew/adonis-bull-queue'
 
 interface RegisterStripeCustomerPayload {
   userId: string;
@@ -92,7 +92,7 @@ If you need to add delays between retries, you can either set it globally via by
 
 ```ts
 // config/queue.ts
-import { defineConfig } from '@rlanz/bull-queue'
+import { defineConfig } from '@retronew/adonis-bull-queue'
 
 export default defineConfig({
   // ...

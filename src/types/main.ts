@@ -1,10 +1,3 @@
-/**
- * @rlanz/bull-queue
- *
- * @license MIT
- * @copyright Romain Lanz <romain.lanz@pm.me>
- */
-
 import { Job } from '../job.js'
 import type { ConnectionOptions, WorkerOptions, QueueOptions, JobsOptions } from 'bullmq'
 

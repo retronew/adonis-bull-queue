@@ -2,7 +2,7 @@
   exports({ to: app.configPath('queue.ts') })
 }}}
 import env from '#start/env'
-import { defineConfig } from '@rlanz/bull-queue'
+import { defineConfig } from '@retronew/adonis-bull-queue'
 
 export default defineConfig({
   defaultConnection: {
@@ -28,7 +28,7 @@ export default defineConfig({
     | @see https://docs.bullmq.io/guide/retrying-failing-jobs
     |
     */
-    attempts: 3,
+    attempts: env.get('QUEUE_ATTEMPTS', 3),
 
     /*
     |--------------------------------------------------------------------------
@@ -42,7 +42,9 @@ export default defineConfig({
     | @see https://docs.bullmq.io/guide/queues/auto-removal-of-jobs
     |
     */
-    removeOnComplete: 100,
-    removeOnFail: 100,
+    removeOnComplete: env.get('QUEUE_REMOVE_ON_COMPLETE', 300),
+    removeOnFail: env.get('QUEUE_REMOVE_ON_FAIL', 300),
   },
+
+  queueNames: ['default'],
 })

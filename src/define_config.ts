@@ -1,10 +1,3 @@
-/**
- * @rlanz/bull-queue
- *
- * @license MIT
- * @copyright Romain Lanz <romain.lanz@pm.me>
- */
-
 import { InvalidArgumentsException } from '@poppinss/utils'
 import type { QueueConfig } from './types/main.js'
 

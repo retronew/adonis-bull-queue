@@ -1,7 +1,7 @@
 {
   "name": "@retronew/adonis-bull-queue",
   "description": "Queue system based on BullMQ for AdonisJS",
-  "version": "3.1.1",
+  "version": "3.1.2",
   "engines": {
     "node": ">=22.13.0"
   },

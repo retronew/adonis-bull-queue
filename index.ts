@@ -1,10 +1,3 @@
-/**
- * @rlanz/bull-queue
- *
- * @license MIT
- * @copyright Romain Lanz <romain.lanz@pm.me>
- */
-
 import './src/types/extended.js'
 
 export { stubsRoot } from './stubs/index.js'

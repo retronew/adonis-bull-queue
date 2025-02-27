@@ -3,7 +3,7 @@
 {{{
   exports({ to: app.makePath('app/jobs', entity.path, jobFileName) })
 }}}
-import { Job } from '@rlanz/bull-queue'
+import { Job } from '@retronew/adonis-bull-queue'
 
 interface {{ jobName }}Payload {}
 

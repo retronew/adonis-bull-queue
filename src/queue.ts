@@ -1,10 +1,3 @@
-/**
- * @rlanz/bull-queue
- *
- * @license MIT
- * @copyright Romain Lanz <romain.lanz@pm.me>
- */
-
 import { isClass } from '@sindresorhus/is'
 import { Queue, QueueOptions, Worker, WorkerOptions } from 'bullmq'
 import { RuntimeException } from '@poppinss/utils'
